@@ -1,1 +1,13 @@
-<h2>Welcome to the drone page</h2>
+<%# // routes/drones.js manages this view%>
+
+<h2> Welcome to the drone page </h2>
+
+<h5> Here is the list of drones that we offer: </h5>
+
+<ul>
+  <%  drones.forEach((oneDrone) => { %>
+    <a href="drones/<%= oneDrone._id %>"> <%= oneDrone.droneName %> </a> <br/><br/>
+  <% }); %>
+</ul>
+
+<button type="button" name="button"><a href="/drones/new">Add a New Drone!</a></button>
