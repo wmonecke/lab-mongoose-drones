@@ -1,13 +1,24 @@
 const express = require('express');
-
-// require the Drone model here
-
 const router = express.Router();
+//I think we require the db here
 
+//Requiring the models to maintain a file structure
+const Drone = require('../models/drone.js');
 
 router.get('/drones', (req, res, next) => {
-  // Iteration #2
+  Drone.find((err, drones) => {  //finding the Drone collection and setting it to 'drones'
+    if (err) {
+      next (err);
+      return;
+    }
+
+    // display views/drones/index.ejs
+    res.render('drones/index', {
+      drones: drones
+    });
+  });
 });
+
 
 
 router.get('/drones/new', (req, res, next) => {
