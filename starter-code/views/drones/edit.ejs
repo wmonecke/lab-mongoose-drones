@@ -1,0 +1,14 @@
+<h2> Edit an existing drone </h2>
+
+<form class="newdrone" action="/drones/<%= result._id %>" method="post">
+  <label for="droneName"> Name of Drone: </label>
+  <input id="droneName" type="text" name="droneName" value="<%= result.droneName %>"> <br> <br>
+
+  <label for="propellers"> Amount of propellers of drone: </label>
+  <input id="propellers" type="number" name="propellers" value="<%= result.propellers %>"> <br> <br>
+
+  <label for="maxSpeed"> Maximum Speed of Drone: </label>
+  <input id="maxSpeed" type="number" name="maxSpeed" value="<%= result.maxSpeed %>"> <br> <br>
+
+  <button type="submit" name="button">Add now</button>
+</form>

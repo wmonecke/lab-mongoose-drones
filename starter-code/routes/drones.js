@@ -61,16 +61,49 @@ router.get('/drones/:id', (req, res, next) => {
 
 
 router.get('/drones/:id/edit', (req, res, next) => {
-	// Iteration #6 (Bonus)
+	let myId = req.params.id;
+
+	Drone.findById(myId, (err, result) => {
+		if (err) {
+			next (err);
+			return;
+		}
+
+		res.render('drones/edit', {
+			result: result
+		});
+	});
 });
 
 router.post('/drones/:id', (req, res, next) => {
-	// Iteration #6 (Bonus)
+	let thisId = req.params.id;
+
+	const droneInfo = {
+		droneName: req.body.droneName,
+		propellers: req.body.propellers,
+		maxSpeed: req.body.maxSpeed
+	};
+
+	Drone.findByIdAndUpdate(thisId, droneInfo, (err, result) => {
+
+		res.redirect('/drones');
+	});
 });
 
 
+
 router.post('/drones/:id/delete', (req, res, next) => {
-	// Iteration #5 (Bonus)
+	let thisId = req.params.id;
+
+	Drone.findByIdAndRemove(thisId, (err, results) => {
+		console.log(results);
+		if (err) {
+			next(err);
+			return;
+		}
+
+		res.redirect('/drones');
+	});
 });
 
 

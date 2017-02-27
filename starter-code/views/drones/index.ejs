@@ -6,7 +6,14 @@
 
 <ul>
   <%  drones.forEach((oneDrone) => { %>
-    <a href="drones/<%= oneDrone._id %>"> <%= oneDrone.droneName %> </a> <br/><br/>
+    <a href="drones/<%= oneDrone._id %>"> <%= oneDrone.droneName %> </a>
+    <form class="newdrone" action="/drones/<%= oneDrone._id %>/delete" method="post">
+      <button type="submit" name="button">Delete</button>
+    </form> </br> </br>
+
+    <form class="newdrone" action="/drones/<%= oneDrone._id %>/edit" method="get">
+      <button type="submit" name="button">Update</button>
+    </form> </br> </br>
   <% }); %>
 </ul>
 
